@@ -89,6 +89,7 @@ run_firmware_checks() (
         idf.py -B "${validation_build_dir}" \
         -D "SDKCONFIG=${validation_build_dir}/sdkconfig" build
     idf.py -B "${validation_build_dir}" merge-bin \
+        --flash_size 4MB \
         -o "${validation_build_dir}/FoloToy-AI-Passport-full.bin"
     python3 tools/verify_firmware.py "${validation_build_dir}"
     PYTHONDONTWRITEBYTECODE=1 python3 tools/archive_firmware.py create \
